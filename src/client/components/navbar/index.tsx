@@ -4,6 +4,7 @@ import { BiWorld } from 'react-icons/bi';
 import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
+
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -23,12 +24,15 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link className="nav-link fs-5 text-dark" to={'/maps'} style={{textDecoration: 'none'}}>Maps</Link>
                     </li>
-                    {/* <li className="nav-item mt-2">
-                        <FaUserCircle size={28} />
-                    </li> */}
                 </ul>
-            </div>
 
+                <div className="nav-item">
+                    <Link className='nav-link' to={'/profile'} style={{textDecoration: 'none', color: 'black'}}>
+                        <FaUserCircle size={28} />
+                    </Link>
+                </div>
+                
+            </div>
         </nav>
     )
 }

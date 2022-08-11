@@ -8,6 +8,7 @@ import Overview from './views/Overview';
 import Writing from './views/Writing';
 import Characters from './views/Characters';
 import Maps from './views/Maps';
+import Profile from './views/Profile';
 
 
 const App = (props: AppProps) => {
@@ -20,6 +21,7 @@ const App = (props: AppProps) => {
 					<Route path='/writing' element={<Writing />} />
 					<Route path='/characters' element={<Characters />} />
 					<Route path='/maps' element={<Maps />} />
+					<Route path='/profile' element={<Profile />} />
 				</Routes>
 		</BrowserRouter>
 	)

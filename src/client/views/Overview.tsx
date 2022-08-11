@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Overview = () => {
     return(
-        <div>
+        <div className='container vh-100'>
             <h1>Overview</h1>
         </div>
     )

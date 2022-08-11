@@ -1,10 +1,18 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { apiService } from '../services/apiService';
 
 const Characters = () => {
+
+    const [name, setName] = useState<string>('');
+    const [info, setInfo] = useState<string>('');
+    
+
     return(
         <div className="container vh-100">
             <h1 className='text-center mt-5'>Characters</h1>
             <div className="row justify-content-around mt-5">
+                
                     <div className="card shadow-lg col-12 col-md-3">
                         <div className="card-title text-center">
                             <h3>Character A</h3>
