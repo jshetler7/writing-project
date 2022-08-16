@@ -7,12 +7,11 @@ const router = express.Router();
 
 
 router.get('/:id', isUser, async(req, res) => {
-    const id = req.params.id;
-    // @ts-ignore
-    const authorid = req.authorid;
     try {
+        const id = req.params.id;
+        const authorid = req.authorid;
         const oneCharacter = await db_characters.getOne(id, authorid);
-        res.json(oneCharacter);
+        res.json(oneCharacter[0]);
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Get character failed." });
@@ -20,9 +19,9 @@ router.get('/:id', isUser, async(req, res) => {
 });
 
 router.get('/', isUser, async(req, res) => {
-    // @ts-ignore
-    const authorid = req.authorid;
     try {
+
+    const authorid = req.authorid;
         const allCharacters = await db_characters.getAll(authorid);
         res.json(allCharacters);
     } catch (error) {
@@ -34,9 +33,7 @@ router.get('/', isUser, async(req, res) => {
 router.post('/', isUser, async(req, res) => {
     try {
         const newCharacter = req.body;
-        // @ts-ignore
         newCharacter.authorid = req.authorid;
-        // @ts-ignore
         console.log(req.authorid);
         newCharacter.id = uuidv4();
         await db_characters.create(newCharacter);
@@ -50,10 +47,9 @@ router.post('/', isUser, async(req, res) => {
 router.put('/:id', isUser, async(req, res) => {
     try {
         const id = req.params.id;
-        // @ts-ignore
         const authorid = req.authorid;
-        const { name, info } = req.body;
-        await db_characters.update({ name, info }, id, authorid);
+        const { name, descriptor, info } = req.body;
+        await db_characters.update({ name, descriptor, info }, id, authorid);
         res.status(200).json({ message: "Successfully updated character." });
     } catch (error) {
         console.log(error);
@@ -64,15 +60,38 @@ router.put('/:id', isUser, async(req, res) => {
 router.delete('/:id', isUser, async(req, res) => {
     try {
         const id = req.params.id;
-        // @ts-ignore
         const authorid = req.authorid;
         await db_characters.destroy(id, authorid);
-        res.status(200).json({ message: "Successfully deleted character." });
+        res.status(200).json({ message: "Successfully deleted character and its tags." });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Delete character failed." });
     }
 });
+
+router.get('/tags/:id', isUser, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const authorid = req.authorid;
+        const oneCharacterTags = await db_characters.getCharacterTags(id, authorid);
+        res.json(oneCharacterTags);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Get character tags failed." });
+    }
+})
+
+// router.delete('/tags/:id', isUser, async (req, res) => {
+// try {
+//     const id = req.params.id;
+//     const authorid = req.authorid;
+//     await db_characters.destroyTag(id, authorid);
+//     res.status(200).json({ message: 'Deleted tags'});
+// } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ message: "Delete tags failed." });
+// }
+// })
 
 
 export default router;

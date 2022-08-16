@@ -1,9 +1,9 @@
 // First override some or all individual color variables
 $primary: #25408f;
-$secondary: #8f5325;
+$secondary: #c4c4c4;
 $success: #3e8d63;
 $info: #13101c;
-$warning: #945707;
+$warning: #c9a505;
 $danger: #d62518;
 $light: #f8f9fa;
 $dark: #343a40;
@@ -27,6 +27,7 @@ $theme-colors: (
 	background: linear-gradient(137deg,#c0c0c0,#07202b);
 	background-size: 120% 120%;
 	animation: gradient-animation 20s ease infinite;
+	height: auto;
   }
   
   @keyframes gradient-animation {
@@ -52,3 +53,15 @@ $theme-colors: (
 
     resize: none; /*remove the resize handle on the bottom right*/
 }
+
+#characterCount {
+	display: flex;
+	align-items: center;
+	align-self: center;
+}
+
+@media (min-width: 768px) {
+	#menuButton {
+		display: none;
+	}
+  }

@@ -8,10 +8,8 @@ export const isUser = (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.headers.authorization?.split(' ')[1]!;
         const tokenInfo = jwt.verify(token, jwt_config.secret) as Payload;
-        console.log(tokenInfo);
-        console.log(tokenInfo.role === 'user');
+
         if (tokenInfo.role === 'user') {
-            // @ts-ignore
             req.authorid = tokenInfo.id;
             next();
         } else {

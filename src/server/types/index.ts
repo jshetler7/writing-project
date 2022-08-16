@@ -1,3 +1,12 @@
+declare global {
+    namespace Express {
+        interface Request {
+            authorid: string;
+        }
+    }
+}
+
+
 export interface Users {
     id: string,
     password: string;
@@ -6,6 +15,13 @@ export interface Users {
     username: string;
     role: string;
 };
+
+export interface GetUser {
+    id: string;
+    email: string;
+    name: string;
+    username: string;
+}
 
 export interface NewUser {
     id: string;
@@ -28,7 +44,6 @@ export interface Articles {
     authorid: string;
     title: string;
     content: string;
-    characterid: string[];
     _created: Date|string;
     _updated: Date|string;
 }
@@ -38,7 +53,6 @@ export interface NewArticle{
     authorid: string;
     title: string;
     content: string;
-    characterid?: string[];
     _created: Date|string;
     _updated: Date|string;
 }
@@ -46,7 +60,6 @@ export interface NewArticle{
 export interface UpdateArticle {
     title: string;
     content: string;
-    characterid: string[];
 }
 
 export interface Characters {
@@ -62,14 +75,52 @@ export interface NewCharacter {
     id: string;
     authorid: string;
     name: string;
+    descriptor: string;
     info: string;
-    _created: Date | string;
-    _updated: Date | string;
 }
 
 export interface UpdateCharacter {
     name: string;
+    descriptor: string;
     info: string;
+}
+
+export interface Maps {
+    id: string;
+    authorid: string;
+    title: string;
+    description?: string;
+    url: string;
+    file_size: number;
+    _created: Date | string;
+}
+
+export interface NewMap {
+    id: string;
+    authorid: string;
+    title: string;
+    url: string;
+}
+
+export interface UpdateMap {
+    title: string;
+    description?: string;
+}
+
+export interface Tags {
+    article_id: string;
+    character_id: string;
+    authorid: string;
+}
+
+export interface CharacterTagSpec extends Tags{
+    title: string;
+}
+
+export interface NewTags {
+    article_id: string;
+    character_id: string;
+    authorid: string;
 }
 
 export interface Payload {

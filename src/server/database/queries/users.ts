@@ -1,9 +1,9 @@
 import { Query } from "..";
-import { Users, NewUser, UpdateUser } from '../../types';
+import { Users, NewUser, UpdateUser, GetUser } from '../../types';
 
-const getAll = () => Query<Users>("SELECT * FROM Users");
+const getAll = () => Query<Users[]>("SELECT * FROM Users");
 
-const getOne = (id: string) => Query<Users>("SELECT * FROM Users WHERE id = ?", [id]);
+const getOne = (id: string) => Query<GetUser[]>("SELECT * FROM Users WHERE id = ?", [id]);
 
 const getbyEmail = (email: string) => Query<Users[]>("SELECT * FROM Users WHERE email = ?", [email]);
 

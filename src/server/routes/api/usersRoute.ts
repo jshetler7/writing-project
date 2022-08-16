@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.get('/:id', isUser, async(req, res) => {
     try {
-        const id = req.params.id;
+        const id = req.authorid;
         const user = await db_users.getOne(id);
-        res.json(user);
+        res.json(user[0]);
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Get user failed." });
