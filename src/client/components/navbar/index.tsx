@@ -14,14 +14,14 @@ const Navbar = () => {
     const nav = useNavigate();
 
     useEffect(() => {
-        if(loc.pathname !== '/' && loc.pathname !== '/register' && loc.pathname !== '/login') {
-            apiService('/auth/verify')
-            .then(() => setIsLoggedIn(true))
-            .catch(() => {
-                setIsLoggedIn(false);
+        apiService('/auth/verify')
+        .then(() => setIsLoggedIn(true))
+        .catch(() => {
+            setIsLoggedIn(false);
+            if(loc.pathname !== '/' && loc.pathname !== '/register' && loc.pathname !== '/login') {
                 nav('/login');
-            })
-        }
+            }
+        })
     }, [loc.pathname]);
 
     const handleExpand = () => {
@@ -83,11 +83,14 @@ const Navbar = () => {
                     </div>
                     </>}
 
-                    <div className="nav-item">
-                        <Link className='nav-link' to={'/profile'} style={{textDecoration: 'none', color: 'black'}} onClick={handleExpand}>
-                            <FaUserCircle size={28} />
-                        </Link>
-                    </div>
+                    {isLoggedIn && <>
+                        <div className="nav-item">
+                            <Link className='nav-link' to={'/profile'} style={{textDecoration: 'none', color: 'black'}} onClick={handleExpand}>
+                                <FaUserCircle size={28} />
+                            </Link>
+                        </div>
+                    </>}
+
                     </div>
             </div>
         </nav>
