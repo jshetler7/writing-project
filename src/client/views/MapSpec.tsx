@@ -36,8 +36,8 @@ const MapSpec = () => {
                     </div>
                 </div>
                 <div className="row justify-content-center my-5">
-                    <Link to={'/maps/edit/' + id} style={{textDecoration: 'none'}} className='btn btn-warning col-2 me-5'>Edit</Link>
-                    <button className='btn btn-danger col-2'>Delete</button>
+                    <Link to={'/maps/edit/' + id} style={{textDecoration: 'none'}} className='btn btn-warning col-4 col-md-2 me-5'>Edit</Link>
+                    <button className='btn btn-danger col-4 col-md-2'>Delete</button>
                 </div>
             </div>
         </div>

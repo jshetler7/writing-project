@@ -44,7 +44,7 @@ const ArticleSpec = () => {
                             to={'/characters/'+ char.character_id} 
                             style={{textDecoration: 'none'}} 
                             key={`${char.character_id}`} 
-                            className='btn btn-secondary btn-sm rounded-pill text-dark fs-8 col-2 mb-1'>
+                            className='btn btn-secondary btn-sm rounded-pill text-dark fs-8 col-4 mb-1'>
                                 {'\n\n' + char.name}
                             </Link>
                         ))}
