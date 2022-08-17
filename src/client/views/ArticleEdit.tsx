@@ -93,7 +93,7 @@ const ArticleEdit = () => {
                             
                         </div>
                         <div className='row justify-content-end my-2 me-3'>
-                            <button className='btn btn-dark col-1' onClick={handleSubmit}>Publish</button>
+                            <button className='btn btn-dark col-3' onClick={handleSubmit}>Publish</button>
                         </div>
                     </form>
                 </div>

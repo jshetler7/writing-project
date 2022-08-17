@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { apiService } from '../services/apiService';
 
 interface LoginProps {}
@@ -27,10 +27,10 @@ const Login = (props: LoginProps) => {
 	};
 
 	return (
-		<main className="container vh-100">
-			<section className="row justify-content-center">
+		<main className="container">
+			<section className="row justify-content-center mt-5">
 				<div className="col-md-6">
-					<form className="px-3 py-4 border rounded shadow">
+					<form className="px-3 py-4 border rounded shadow-lg bg-light">
 						<label>Email</label>
 						<input
 							type="email"
@@ -52,11 +52,19 @@ const Login = (props: LoginProps) => {
 							onChange={handleChanges}
 						/>
 						<div className="mt-3 d-flex justify-content-end">
-							<button className="btn btn-primary" onClick={handleLogin}>
+							<button className="btn btn-success text-light" onClick={handleLogin}>
 								Login
 							</button>
 						</div>
 					</form>
+				</div>
+				<div className="row justify-content-center">
+					<div className="col-10 col-md-6 bg-light border rounded-3 shadow-lg">
+						<p className='col-12 text-center'>Need an acount? Register here!</p>
+						<div className="row justify-content-center">
+							<Link to={'/register'} style={{textDecoration: 'none'}}className='btn btn-warning col-4 col-md-3 text-light'>Register</Link>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section className="row justify-content-center">

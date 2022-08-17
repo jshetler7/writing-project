@@ -14,12 +14,14 @@ const Navbar = () => {
     const nav = useNavigate();
 
     useEffect(() => {
-        apiService('/auth/verify')
-        .then(() => setIsLoggedIn(true))
-        .catch(() => {
-            setIsLoggedIn(false);
-            nav('/login');
-        });
+        if(loc.pathname !== '/' && loc.pathname !== '/register' && loc.pathname !== '/login') {
+            apiService('/auth/verify')
+            .then(() => setIsLoggedIn(true))
+            .catch(() => {
+                setIsLoggedIn(false);
+                nav('/login');
+            })
+        }
     }, [loc.pathname]);
 
     const handleExpand = () => {

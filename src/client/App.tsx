@@ -14,6 +14,7 @@ import MapSpec from './views/MapSpec';
 import MapEdit from './views/MapEdit';
 import Profile from './views/Profile';
 import Login from '../client/views/Login';
+import Register from './views/Register';
 import ArticleSpec from './views/ArticleSpec';
 import ArticleEdit from './views/ArticleEdit';
 import CharacterEdit from './views/CharacterEdit';
@@ -35,6 +36,7 @@ const App = (props: AppProps) => {
 					<Route path='/maps/edit/:id' element={<MapEdit />} />
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
 					<Route path='/articles' element={<Articles />} />
 					<Route path='/articles/:id' element={<ArticleSpec />} />
 					<Route path='/articles/edit/:id' element={<ArticleEdit />} />
