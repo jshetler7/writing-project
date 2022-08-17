@@ -36,6 +36,11 @@ const Navbar = () => {
         }
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        nav('/login');
+    }
+
     return(
         <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid">
@@ -69,6 +74,12 @@ const Navbar = () => {
 
                     <div className="nav-item">
                         <Link className='btn btn-warning text-light' to={'/register'} style={{textDecoration: 'none'}} onClick={handleExpand}>Register</Link>
+                    </div>
+                    </>}
+
+                    {isLoggedIn && <>
+                    <div className="nav-item">
+                        <button className='btn btn-outline-primary' onClick={handleLogout}>Logout</button>
                     </div>
                     </>}
 
