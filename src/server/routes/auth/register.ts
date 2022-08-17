@@ -9,12 +9,15 @@ import { jwt_config } from '../../config';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const newUser = req.body;
     try {
-        newUser.password = bcrypt.hashSync(newUser.password, 12);
-        newUser.id = uuidv4();
-        await db_users.create(newUser);
-        const token = jwt.sign({id: newUser.id,  role: 'user'}, jwt_config.secret, { expiresIn: jwt_config.expiration });
+        const { name, username, email, password} = req.body;
+        if (!name||!username||!email||!password) {
+            return res.status(400).json({ message: 'All fields not filled out.'})
+        }
+        const id = uuidv4();
+        const hash = bcrypt.hashSync(password, 12);
+        await db_users.create({ id, name, username, email, password: hash });
+        const token = jwt.sign({id: id, role: 'user'}, jwt_config.secret, { expiresIn: jwt_config.expiration });
         res.status(201).json({ message: "New user created.", token });
     } catch (error) {
         console.log(error);
