@@ -16,7 +16,7 @@ const Register = () => {
 		apiService('/auth/register', 'POST', { name: name, username: username, email: email, password: password })
 		.then(register => {
 			localStorage.setItem('token', register.token);
-			nav('/books');
+			nav('/overview');
 		})
 		.catch(err => console.log(err))
     };

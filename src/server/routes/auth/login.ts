@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         const matched = bcrypt.compareSync(password, users.password);
 
         if(matched) {
-            const token = jwt.sign({ id: users.id, role: users.role}, jwt_config.secret, { expiresIn: jwt_config.expiration });
+            const token = jwt.sign({ id: users.id, role: users.role, email: users.email, userIsVerified: users.verified}, jwt_config.secret, { expiresIn: jwt_config.expiration });
             res.json({ message: "Match confirmed.", token });
         } else  {
             res.json({ message: "No match found." });

@@ -7,10 +7,14 @@ import { Payload } from "../types";
 export const isUser = (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.headers.authorization?.split(' ')[1]!;
+        if(!token) {
+            throw new Error('No token provided');
+        }
         const tokenInfo = jwt.verify(token, jwt_config.secret) as Payload;
 
         if (tokenInfo.role === 'user') {
             req.authorid = tokenInfo.id;
+            req.email = tokenInfo.email;
             next();
         } else {
             res.status(403).json({ message: "Def not approved. Get outta here, user #" + tokenInfo.id});

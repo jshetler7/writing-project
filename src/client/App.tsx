@@ -18,6 +18,7 @@ import Register from './views/Register';
 import ArticleSpec from './views/ArticleSpec';
 import ArticleEdit from './views/ArticleEdit';
 import CharacterEdit from './views/CharacterEdit';
+import Verify from './views/Verify';
 
 
 const App = (props: AppProps) => {
@@ -37,6 +38,7 @@ const App = (props: AppProps) => {
 					<Route path='/profile' element={<Profile />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
+					<Route path='/verify' element={<Verify />} />
 					<Route path='/articles' element={<Articles />} />
 					<Route path='/articles/:id' element={<ArticleSpec />} />
 					<Route path='/articles/edit/:id' element={<ArticleEdit />} />

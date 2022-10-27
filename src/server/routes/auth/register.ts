@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import { v4 as uuidv4} from 'uuid';
 import db_users from '../../database/queries/users';
 import { jwt_config } from '../../config';
+import { sendVerificationEmail } from '../../utils/mailgun';
 
 
 const router = express.Router();
@@ -17,7 +18,8 @@ router.post('/', async (req, res) => {
         const id = uuidv4();
         const hash = bcrypt.hashSync(password, 12);
         await db_users.create({ id, name, username, email, password: hash });
-        const token = jwt.sign({id: id, role: 'user'}, jwt_config.secret, { expiresIn: jwt_config.expiration });
+        await sendVerificationEmail(email);
+        const token = jwt.sign({id: id, role: 'user', email: email, userIsVerified: false}, jwt_config.secret, { expiresIn: jwt_config.expiration });
         res.status(201).json({ message: "New user created.", token });
     } catch (error) {
         console.log(error);

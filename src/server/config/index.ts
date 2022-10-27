@@ -13,6 +13,11 @@ export const jwt_config = {
     expiration: process.env.JWT_EXPIRATION!
 };
 
+export const mailgun_config = {
+    apiKey: process.env.MAILGUN_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN
+}
+
 export const aws = {
     region: process.env.AWS_REGION,
     apiVersion: process.env.AWS_API_VERSION,

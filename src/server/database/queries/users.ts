@@ -13,6 +13,8 @@ const update = (id: string, pizza: UpdateUser) => Query("UPDATE Users SET ? WHER
 
 const destroy = (id: string) => Query("DELETE FROM Users WHERE id = ?", [id]);
 
+const verified = (email: string) => Query(`UPDATE Users SET verified = 1 WHERE Users.email = ?`, [email]);
+
 
 export default {
     getAll, 
@@ -20,5 +22,6 @@ export default {
     getbyEmail,
     create,
     update,
-    destroy
+    destroy,
+    verified
 };

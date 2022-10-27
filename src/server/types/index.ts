@@ -2,6 +2,8 @@ declare global {
     namespace Express {
         interface Request {
             authorid: string;
+            email: string;
+            userIsVerified: boolean;
         }
     }
 }
@@ -14,6 +16,7 @@ export interface Users {
     name: string;
     username: string;
     role: string;
+    verified: boolean;
 };
 
 export interface GetUser {
@@ -126,4 +129,5 @@ export interface NewTags {
 export interface Payload {
     id: string;
     role: string;
+    email: string;
 }
