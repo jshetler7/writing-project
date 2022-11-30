@@ -2,24 +2,43 @@
 @tailwind utilities;
 @tailwind components;
 
-.gradient-background {
-	background: linear-gradient(137deg,#c0c0c0,#07202b);
-	background-size: 120% 120%;
-	animation: gradient-animation 20s ease infinite;
-	height: auto;
-  }
+#navbar {
+	background: rgba( 255, 255, 255, 0.1 );
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 8px );
+	-webkit-backdrop-filter: blur( 8px );
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	position: sticky;
+	top: 0px;
+	z-index: 20;
+	}
+	
+	#navbar.dark {
+	background: rgba( 0, 0, 0, 0.3 );
+	box-shadow: 0 8px 16px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 5px );
+	-webkit-backdrop-filter: blur( 5px );
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	}
+
+// .gradient-background {
+// 	background: linear-gradient(137deg,#c0c0c0,#07202b);
+// 	background-size: 120% 120%;
+// 	animation: gradient-animation 20s ease infinite;
+// 	height: auto;
+//   }
   
-  @keyframes gradient-animation {
-	0% {
-	  background-position: 0% 50%;
-	}
-	50% {
-	  background-position: 100% 50%;
-	}
-	100% {
-	  background-position: 0% 50%;
-	}
-  }
+//   @keyframes gradient-animation {
+// 	0% {
+// 	  background-position: 0% 50%;
+// 	}
+// 	50% {
+// 	  background-position: 100% 50%;
+// 	}
+// 	100% {
+// 	  background-position: 0% 50%;
+// 	}
+//   }
 
   #writing-input {
     border: none;
